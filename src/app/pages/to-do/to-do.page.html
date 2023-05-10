@@ -1,0 +1,70 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+    <ion-menu-button></ion-menu-button>
+  </ion-buttons>
+    <ion-title align="center">ToDoList</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+
+  <!--Task List -->
+  <ion-accordion-group *ngFor="let task of tasks" > 
+    <ion-accordion >
+      
+      <ion-item slot="header" color="tertiary">
+    <ion-checkbox style="margin-right:15px;" expand="block" (click)="presentToast('bottom')"> </ion-checkbox> 
+    
+    <ion-label>{{ task.name }}</ion-label> 
+ </ion-item>
+     
+      <div class="ion-padding" slot="content">
+        Details: {{task.description}}
+      </div>
+      <div class="ion-padding" slot="content">
+       Start:  {{task.date_of_start | date }}
+      </div>
+      <div class="ion-padding" slot="content">
+      End:  {{task.date_of_end | date }}
+      </div>
+      <div class="ion-padding" slot="content">
+       Status: {{task.status}}
+      </div>
+    </ion-accordion>
+  
+  </ion-accordion-group>
+
+<!---Task Form  id="present-alert"-->
+  <!---TASK ADD MINI -->
+   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button  (click)="presentAlertPrompt()" >
+      <ion-icon name="add"></ion-icon>
+    <ion-alert
+   header="Add Task "
+   [buttons]
+   [inputs]
+  ></ion-alert>
+
+    </ion-fab-button>
+  </ion-fab>
+
+
+  <!-- <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button   >
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>  -->
+
+
+
+
+
+
+
+
+
+
+
+</ion-content>
